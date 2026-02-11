@@ -1,3 +1,8 @@
+## Automation
+- monitor.sh runs hourly via cron on all VMs
+- Logs stored in monitor.log for inspection
+
+
 #!/bin/bash
 
 echo "==== SYSTEM MONITOR ===="
