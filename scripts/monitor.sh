@@ -5,6 +5,8 @@
 
 #!/bin/bash
 
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
 echo "==== SYSTEM MONITOR ===="
 echo "Hostname: $(hostname)"
 echo "Uptime: $(uptime -p)"
