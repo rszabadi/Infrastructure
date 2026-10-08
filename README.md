@@ -86,10 +86,13 @@ The server is not running 24/7, so some services may only be available when the 
 
 The local DNS server runs on **VM5** using Pi-hole and Unbound.
 
-- **Primary DNS:** `192.168.1.240`
-- **Secondary DNS:** `9.9.9.9` (Quad9)
+- **VMs:**
+  - Primary DNS: `192.168.1.240`
+  - No secondary DNS
 
-All devices on the network use the local DNS server as their primary DNS.
+- **Other local devices:**
+  - Primary DNS: `192.168.1.240`
+  - Secondary DNS: `9.9.9.9` (Quad9)
 
 ## Network
 
