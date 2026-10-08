@@ -1,81 +1,105 @@
 # Homelab Infrastructure
 
-Personal home lab used to learn and experiment with virtualization, Linux servers,
-networking, and self-hosted services.
+Personal home lab used to learn and experiment with virtualization, Linux servers, networking, and self-hosted services.
 
-*All VMs use the private DNS (192.168.1.240) created in the DNS VM
+The server is not running 24/7, so some services may only be available when the homelab is powered on.
 
 ## Hardware
-- **CPU:** Intel i5-11400  
-- **RAM:** 32GB DDR4  
+
+- **CPU:** Intel i5-11400
+- **RAM:** 32GB DDR4
 - **Storage:**
   - 2TB NVMe M.2 (primary)
   - 1TB SATA SSD (secondary)
 
 ## Hypervisor
+
 - Proxmox VE 9.1.1
 
 ## Virtual Machines & Services
 
 ### VM1 – OMV (NAS)
-- Role: Network Attached Storage
-- Purpose:
+
+- **Status:** 🟢 Active
+- **Role:** Network Attached Storage
+- **Purpose:**
   - Backups for other VMs
-  - Media and data management
-  - 192.168.1.210
+  - Media and data storage
+- **IP:** `192.168.1.210`
 
 ### VM2 – Ubuntu Server (Game Server)
-- Role: Game server host
-- Purpose:
+
+- **Status:** ⚪ Inactive
+- **Role:** Game server host
+- **Purpose:**
   - Hosting multiplayer servers
   - Process management and performance tuning
   - Remote access via SSH
-  - 192.168.1.200
+- **IP:** `192.168.1.200`
 
 ### VM3 – Ubuntu Server (Hosting)
-- Role: Web hosting
-- Purpose:
+
+- **Status:** 🟢 Active
+- **Role:** Web hosting
+- **Purpose:**
   - Hosts my CV website
-  - Future services (dashboards, APIs, personal projects)
-  - 192.168.1.220
+  - Future services such as dashboards, APIs, and personal projects
+- **IP:** `192.168.1.220`
 
-### VM4 – OPNSense (Firewall)
-- Role: Firewall
-- Purpose:
-  - Block incoming and outcoming data
-  - Host a vpn service with WireGuard
-  - 192.168.1.230
- 
+### VM4 – OPNsense (Firewall)
+
+- **Status:** ⚪ Inactive
+- **Role:** Firewall
+- **Purpose:**
+  - Block incoming and outbound traffic
+  - Host a VPN service with WireGuard
+- **IP:** `192.168.1.230`
+
 ### VM5 – Ubuntu Server (DNS)
-- Role: Privacy
-- Purpose:
-  - Create a private DNS via unbound and Pi-hole
-  - Block most known ad, malware, phising and scam domains
-  - 192.168.1.240
 
-### VM6 – Kali-Linux (Sandbox)
-- Role: Sandbox / hacking
-- Purpose:
-  - Test popular hacking tools
+- **Status:** 🟢 Active
+- **Role:** DNS / Network filtering
+- **Purpose:**
+  - Local DNS using Unbound and Pi-hole
+  - Block known ad, malware, phishing, and scam domains
+- **IP:** `192.168.1.240`
+
+### VM6 – Kali Linux (Sandbox)
+
+- **Status:** ⚪ Inactive
+- **Role:** Security testing sandbox
+- **Purpose:**
+  - Test security tools
   - Controlled via VNC
-  - 192.168.1.250
+- **IP:** `192.168.1.250`
 
 ### VM7 – Planned
-- Role: Proxy / Reverse Proxy
-- Purpose:
+
+- **Status:** ⚪ Inactive
+- **Role:** Proxy / Reverse Proxy
+- **Purpose:**
   - Learn Nginx / Traefik
   - Central routing for services
   - SSL and domain-based access
 
+## DNS
+
+The local DNS server runs on **VM5** using Pi-hole and Unbound.
+
+- **Primary DNS:** `192.168.1.240`
+- **Secondary DNS:** `9.9.9.9` (Quad9)
+
+All devices on the network use the local DNS server as their primary DNS.
+
 ## Network
-- ZeroTier One
-- Purpose:
-  - Secure remote access
-  - Private virtual network across devices
- 
-## Network (future)
-- WireGuard
-- Purpose:
-  - Secure remote access
-  - Access to private DNS from outside
-  - Access to firewall from outside
+
+### ZeroTier One
+
+- Secure remote access
+- Private virtual network across devices
+
+### WireGuard (Future)
+
+- Secure remote access
+- Access to local services from outside the network
+- Remote access to the firewall
